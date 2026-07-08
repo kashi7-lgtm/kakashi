@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASHION IN | Modern Red & White Haute Couture</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display for headings & Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons for premium visual details -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom configuration & Tailwind Layer overrides -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#C91C24',       // Luxe crimson red
+                            redHover: '#A81319',  // Deep scarlet hover
+                            lightRed: '#FFF5F5',  // Very soft pinkish/cream tint
+                            white: '#FFFFFF',
+                            cream: '#FAFAF9',     // Warm neutral white
+                            charcoal: '#111111',  // Crisp text color
+                            muted: '#71717A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAFAF9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C91C24;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #111111;
+        }
+        .hero-zoom {
+            animation: slowZoom 25s ease-out infinite alternate;
+        }
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); }
+        }
+
+        /* Elegant typing loading sequence styles */
+        .typing-dots span {
+            width: 6px;
+            height: 6px;
+            background-color: #C91C24;
+            border-radius: 50%;
+            display: inline-block;
+            animation: typingBlink 1.4s infinite both;
+        }
+        .typing-dots span:nth-child(2) { animation-delay: .2s; }
+        .typing-dots span:nth-child(3) { animation-delay: .4s; }
+        @keyframes typingBlink {
+            0%, 80%, 100% { opacity: 0.2; transform: scale(0.8); }
+            40% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Fine Markdown style overrides inside AI Stylist */
+        .chat-md strong {
+            font-weight: 600;
+            color: #C91C24;
+        }
+        .chat-md p {
+            margin-bottom: 0.5rem;
+        }
+        .chat-md p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body class="bg-brand-cream text-brand-charcoal font-sans overflow-x-hidden">
+
+<!-- Top Promo Banner -->
+<div class="bg-brand-red text-brand-white text-xs uppercase tracking-[0.25em] py-2.5 px-4 text-center relative z-50 font-semibold">
+    <span>Grand Launch: 15% OFF your first order with code <span class="underline">FASHIONIN15</span></span>
+</div>
+
+<!-- Sticky Navigation -->
+<nav id="navbar" class="fixed top-9 left-0 w-full z-40 bg-brand-white/90 backdrop-blur-md border-b border-brand-red/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-brand-charcoal hover:text-brand-red focus:outline-none transition-colors" aria-label="Open menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Navigation Links - Left (Desktop) -->
+            <div class="hidden md:flex space-x-8 text-xs font-semibold tracking-[0.2em] uppercase">
+                <a href="#new-arrivals" class="hover:text-brand-red transition-colors duration-200">New Arrivals</a>
+                <a href="#collections" class="hover:text-brand-red transition-colors duration-200">Collections</a>
+                <a href="#ai-design-lab" class="hover:text-brand-red transition-colors duration-200">AI Atelier Lab</a>
+                <a href="#contact-section" class="hover:text-brand-red transition-colors duration-200">Atelier Booking</a>
+            </div>
+
+            <!-- Brand Logo -->
+            <div class="flex-1 text-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+                <a href="#" class="font-serif text-2xl sm:text-3xl font-semibold tracking-[0.2em] uppercase hover:opacity-90 transition-opacity flex items-center justify-center gap-1">
+                    <span class="text-brand-red">FASHION</span>
+                    <span class="font-light text-brand-charcoal border-l-2 border-brand-red pl-2">IN</span>
+                </a>
+            </div>
+
+            <!-- Icons Panel - Right -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <!-- Search Button -->
+                <button id="search-btn" class="p-2 text-brand-charcoal hover:text-brand-red transition-colors duration-200" aria-label="Search">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </button>
+                <!-- Wishlist Trigger with active indicator -->
+                <button id="wishlist-btn" onclick="toggleWishlistDrawer()" class="p-2 text-brand-charcoal hover:text-brand-red transition-colors duration-200 relative" aria-label="Wishlist">
+                    <i data-lucide="heart" class="w-5 h-5"></i>
+                    <span id="wishlist-count" class="absolute top-1.5 right-1.5 w-2 h-2 bg-brand-red rounded-full hidden"></span>
+                </button>
+                <!-- Shopping Cart Button with Dynamic Badge Count -->
+                <button id="cart-btn" class="p-2 text-brand-charcoal hover:text-brand-red transition-colors duration-200 relative" aria-label="Shopping Cart">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-count" class="absolute -top-0.5 -right-0.5 bg-brand-red text-brand-white text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Drawer Navigation Overlay -->
+<div id="mobile-menu-drawer" class="fixed inset-0 z-50 bg-brand-charcoal/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+    <div class="fixed top-0 left-0 w-80 max-w-full h-full bg-brand-white p-8 shadow-2xl flex flex-col justify-between transform -translate-x-full transition-transform duration-300">
+        <div>
+            <div class="flex justify-between items-center mb-12">
+                <span class="font-serif text-xl tracking-[0.15em] uppercase font-bold text-brand-red">FASHION IN</span>
+                <button id="mobile-menu-close" class="p-2 hover:text-brand-red transition-colors">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-6 text-sm font-semibold tracking-[0.15em] uppercase">
+                <a href="#new-arrivals" class="hover:text-brand-red transition-colors">New Arrivals</a>
+                <a href="#collections" class="hover:text-brand-red transition-colors">Collections</a>
+                <a href="#ai-design-lab" class="hover:text-brand-red transition-colors">AI Atelier Lab</a>
+                <a href="#contact-section" class="hover:text-brand-red transition-colors">Atelier Booking</a>
+                <a href="#brand-story" class="hover:text-brand-red transition-colors">Brand Legacy</a>
+            </div>
+        </div>
+        <div class="border-t border-brand-red/10 pt-6">
+            <p class="text-xs text-brand-muted mb-4">In need of styling assistance?</p>
+            <a href="mailto:styling@fashionin.com" class="text-xs font-semibold tracking-wider hover:text-brand-red">styling@fashionin.com</a>
+        </div>
+    </div>
+</div>
+
+<!-- Red & White Cinematic Hero Section -->
+<header class="relative min-h-screen flex items-center justify-center overflow-hidden bg-brand-charcoal pt-20">
+    <!-- Image Slider Background with red filter vignette -->
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1920&q=85" alt="Crimson Fashion Background" class="hero-zoom w-full h-full object-cover object-center opacity-60">
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal via-brand-red/10 to-brand-charcoal/50"></div>
+    </div>
+
+    <!-- Editorial Hero Content -->
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-brand-white z-10 py-24 sm:py-32">
+        <span class="text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase block mb-4 text-brand-red animate-fade-in">Redefining Crimson Elegance</span>
+        <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-wide leading-tight mb-8">
+            Boldness In <br class="hidden sm:inline">
+            <span class="italic font-normal font-serif text-brand-red">Red & White</span>
+        </h1>
+        <p class="max-w-lg mx-auto text-sm sm:text-base text-stone-200 font-light tracking-wide leading-relaxed mb-10">
+            A seasonal capsule engineered for striking silhouettes. Experience structured ivory tailoring layered under dramatic cherry trenchcoats.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="#shop-all" class="w-full sm:w-auto px-8 py-4 bg-brand-red text-brand-white hover:bg-brand-white hover:text-brand-red font-medium text-xs tracking-[0.25em] uppercase transition-all duration-300 hover:scale-105 shadow-lg">
+                Explore Capsule
+            </a>
+            <a href="#ai-design-lab" class="w-full sm:w-auto px-8 py-4 border border-brand-white/40 hover:border-brand-red hover:bg-brand-red/10 font-medium text-xs tracking-[0.25em] uppercase transition-all duration-300">
+                Design Custom Fit
+            </a>
+        </div>
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <a href="#new-arrivals" class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-brand-white/60 hover:text-brand-red transition-colors duration-300">
+        <span class="text-[9px] uppercase tracking-[0.3em] mb-2 font-semibold">Discover</span>
+        <i data-lucide="chevron-down" class="w-4 h-4 animate-bounce"></i>
+    </a>
+</header>
+
+<!-- Core Value Props section -->
+<section class="border-y border-brand-red/10 bg-brand-white">
+    <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:divide-x md:divide-brand-red/10 text-center">
+        <div class="flex flex-col items-center p-4">
+            <i data-lucide="sparkles" class="w-5 h-5 text-brand-red mb-3"></i>
+            <h4 class="text-xs font-semibold uppercase tracking-widest mb-1">Tailored in Milan</h4>
+            <p class="text-xs text-brand-muted max-w-xs leading-relaxed">Artisanal garments woven with Italian craftsmanship, boasting bespoke fits.</p>
+        </div>
+        <div class="flex flex-col items-center p-4">
+            <i data-lucide="package-check" class="w-5 h-5 text-brand-red mb-3"></i>
+            <h4 class="text-xs font-semibold uppercase tracking-widest mb-1">Sustainable Fine Fibers</h4>
+            <p class="text-xs text-brand-muted max-w-xs leading-relaxed">Consciously curated luxury wool, certified organic cotton, and pure silk threads.</p>
+        </div>
+        <div class="flex flex-col items-center p-4">
+            <i data-lucide="calendar" class="w-5 h-5 text-brand-red mb-3"></i>
+            <h4 class="text-xs font-semibold uppercase tracking-widest mb-1">Bespoke Fitting Session</h4>
+            <p class="text-xs text-brand-muted max-w-xs leading-relaxed">Complimentary in-person tailoring and custom sizing available for all guests.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Curated Categories section -->
+<section id="collections" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+        <span class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-red">The Crimson Canvas</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-light mt-2 tracking-wider">Curated Collections</h2>
+        <div class="w-12 h-[1px] bg-brand-red mx-auto mt-4"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <!-- Rouge Femme -->
+        <div class="group relative aspect-[3/4] overflow-hidden bg-brand-charcoal shadow-md">
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Rouge Femme Wear" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-90 group-hover:opacity-75">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-red/90 via-brand-charcoal/20 to-transparent"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-8 text-brand-white">
+                <span class="text-[10px] tracking-[0.25em] uppercase text-brand-white font-semibold mb-2 opacity-80">Empowered Silhouette</span>
+                <h3 class="font-serif text-2xl font-light tracking-wide mb-4">Femme Scarlet</h3>
+                <div>
+                    <button onclick="setCategoryFilter('women')" class="text-xs font-semibold tracking-widest uppercase border-b border-brand-white pb-1 hover:text-brand-charcoal hover:border-brand-charcoal transition-colors">
+                        View Capsule
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alabaster Homme -->
+        <div class="group relative aspect-[3/4] overflow-hidden bg-brand-charcoal shadow-md">
+            <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80" alt="Alabaster Homme Collection" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-90 group-hover:opacity-75">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/90 via-brand-red/30 to-transparent"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-8 text-brand-white">
+                <span class="text-[10px] tracking-[0.25em] uppercase text-brand-red font-semibold mb-2">Architectural Cuts</span>
+                <h3 class="font-serif text-2xl font-light tracking-wide mb-4">Homme Ivory</h3>
+                <div>
+                    <button onclick="setCategoryFilter('men')" class="text-xs font-semibold tracking-widest uppercase border-b border-brand-white pb-1 hover:text-brand-red hover:border-brand-red transition-colors">
+                        View Capsule
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accents & Shoes -->
+        <div class="group relative aspect-[3/4] overflow-hidden bg-brand-charcoal shadow-md">
+            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80" alt="Crimson Footwear & Accessories" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 opacity-90 group-hover:opacity-75">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-red/90 via-brand-charcoal/20 to-transparent"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-8 text-brand-white">
+                <span class="text-[10px] tracking-[0.25em] uppercase text-brand-white font-semibold mb-2 opacity-80">Bold statements</span>
+                <h3 class="font-serif text-2xl font-light tracking-wide mb-4">Cherry Accents</h3>
+                <div>
+                    <button onclick="setCategoryFilter('accessories')" class="text-xs font-semibold tracking-widest uppercase border-b border-brand-white pb-1 hover:text-brand-charcoal hover:border-brand-charcoal transition-colors">
+                        View Capsule
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filterable Product Section -->
+<section id="shop-all" class="py-24 bg-brand-white border-y border-brand-red/10 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Interactive Header with category toggles -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+            <div class="text-center md:text-left">
+                <span class="text-xs font-semibold uppercase tracking-[0.25em] text-brand-red">The Signature Collection</span>
+                <h2 id="new-arrivals" class="font-serif text-3xl font-light mt-1 tracking-wider">Luxe Crimson & Alabaster Edit</h2>
+            </div>
+            
+            <!-- Category Filters Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs font-semibold tracking-[0.15em] uppercase">
+                <button onclick="setCategoryFilter('all')" class="category-btn px-5 py-2.5 rounded-full border border-brand-red/20 transition-all duration-300 active" data-cat="all">
+                    Show All
+                </button>
+                <button onclick="setCategoryFilter('women')" class="category-btn px-5 py-2.5 rounded-full border border-brand-red/10 transition-all duration-300" data-cat="women">
+                    Femme Rouge
+                </button>
+                <button onclick="setCategoryFilter('men')" class="category-btn px-5 py-2.5 rounded-full border border-brand-red/10 transition-all duration-300" data-cat="men">
+                    Homme Ivory
+                </button>
+                <button onclick="setCategoryFilter('accessories')" class="category-btn px-5 py-2.5 rounded-full border border-brand-red/10 transition-all duration-300" data-cat="accessories">
+                    Accents
+                </button>
+            </div>
+        </div>
+
+        <!-- Dynamic Product Grid container -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+            <!-- Dynamically populated products from JavaScript database -->
+        </div>
+    </div>
+</section>
+
+<!-- Editorial Narrative & Lookbook Section -->
+<section id="brand-story" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Immersive Image Layer with offset frame -->
+        <div class="lg:col-span-7 relative">
+            <div class="absolute -top-4 -left-4 w-2/3 h-[90%] border border-brand-red/30 -z-10 font-bold"></div>
+            <div class="aspect-[16/10] overflow-hidden shadow-2xl bg-brand-charcoal">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Tailoring Craftsmanship Studio" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700">
+            </div>
+            <!-- Secondary abstract floating crop -->
+            <div class="absolute -bottom-8 -right-8 w-1/3 aspect-[3/4] overflow-hidden shadow-xl hidden sm:block border-4 border-brand-white">
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=400&q=80" alt="Scarlet Dress Model" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Editorial Copy -->
+        <div class="lg:col-span-5 lg:pl-8 space-y-6">
+            <span class="text-xs font-semibold tracking-[0.25em] uppercase text-brand-red">The Red & White Doctrine</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-light tracking-wide leading-tight">Contrast Is Power. Simplicity Is Truth.</h2>
+            <p class="text-sm text-brand-muted font-light leading-relaxed">
+                At <strong class="text-brand-charcoal">FASHION IN</strong>, we discard the boring palette of fast fashion. We treat garments as architecture, relying on two eternal forces: the blazing clarity of Crimson Red, and the peaceful purity of Alabaster White.
+            </p>
+            <p class="text-sm text-brand-muted font-light leading-relaxed">
+                Each suit is built by hand with hand-stitched silk seams, heavy wool panels, and hidden structural closures. It’s couture designed not just to fit, but to command a room.
+            </p>
+            <div class="pt-4">
+                <a href="#shop-all" class="inline-flex items-center text-xs font-semibold tracking-[0.2em] uppercase border-b border-brand-red pb-2 hover:text-brand-red transition-all duration-300">
+                    Discover Our Process <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Custom Garment Lab Section -->
+<section id="ai-design-lab" class="py-24 bg-brand-white border-y border-brand-red/10 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Atelier Design Engine Details -->
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-xs font-semibold tracking-[0.25em] uppercase text-brand-red flex items-center gap-1.5">
+                    <i data-lucide="sparkles" class="w-4 h-4 animate-pulse"></i> Atelier AI Design Lab
+                </span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-light tracking-wide leading-tight">Draft Your Custom Silhouette</h2>
+                <p class="text-sm text-brand-muted font-light leading-relaxed">
+                    Unleash your sartorial creativity. Describe your absolute dream fashion silhouette below—combining rich cherry scarlet wools, alabaster silks, asymmetrical tailoring, or striking modern cuts. Our generative AI visualizer will paint your custom sketch instantly.
+                </p>
+                
+                <div class="space-y-4 pt-2">
+                    <div class="relative">
+                        <textarea id="ai-prompt-input" rows="3" 
+                                  class="w-full px-4 py-3 bg-brand-cream border border-brand-red/20 text-xs focus:outline-none focus:border-brand-red transition-all duration-200 rounded-sm tracking-wider uppercase" 
+                                  placeholder="E.g., An asymmetrical alabaster white evening gown with layered crimson pleats and a dramatic scarlet satin shoulder flourish..."></textarea>
+                    </div>
+
+                    <!-- Instant Suggestion Chips -->
+                    <div class="flex flex-wrap gap-2 text-[9px] font-semibold tracking-wider uppercase text-brand-muted">
+                        <button onclick="fillAIPrompt('A modern tailored double-breasted tuxedo in crisp alabaster white, styled with a brilliant scarlet silk tie and peak red satin lapels')" class="px-3 py-2 border border-brand-red/10 hover:border-brand-red hover:text-brand-red transition-all duration-200 rounded-full">Alabaster Tuxedo</button>
+                        <button onclick="fillAIPrompt('High-collar structured winter trenchcoat in deep crimson red wool, featuring gold closures and a white linen lining')" class="px-3 py-2 border border-brand-red/10 hover:border-brand-red hover:text-brand-red transition-all duration-200 rounded-full">Scarlet Trench</button>
+                        <button onclick="fillAIPrompt('A striking asymmetric red pleated dress with milk-white silk ribbons flowing from the waist')" class="px-3 py-2 border border-brand-red/10 hover:border-brand-red hover:text-brand-red transition-all duration-200 rounded-full">Silk Ribbon Dress</button>
+                    </div>
+
+                    <button id="ai-generate-btn" onclick="generateAIDesign()" class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-brand-white font-semibold text-xs tracking-[0.25em] uppercase transition-all duration-300 rounded-sm flex items-center justify-center gap-2">
+                        <i data-lucide="paintbrush" class="w-4 h-4"></i> Render Custom Blueprint
+                    </button>
+                </div>
+            </div>
+
+            <!-- Visual Generation Preview Box -->
+            <div class="lg:col-span-7 flex justify-center">
+                <div class="relative w-full max-w-md aspect-[3/4] border border-brand-red/15 p-4 bg-brand-white shadow-xl flex items-center justify-center overflow-hidden rounded-sm">
+                    <!-- Elegant visual frame anchors -->
+                    <div class="absolute inset-2 border border-brand-red/5 -z-0"></div>
+                    <div class="absolute top-4 left-4 text-[9px] uppercase tracking-[0.2em] text-brand-red font-semibold z-10">Specimen AI-2026</div>
+
+                    <!-- Generative Loader Panel overlay -->
+                    <div id="ai-loader" class="hidden absolute inset-0 bg-brand-cream/95 backdrop-blur-sm z-20 flex flex-col items-center justify-center text-center p-8 space-y-4">
+                        <div class="w-12 h-12 border-2 border-brand-red border-t-transparent rounded-full animate-spin"></div>
+                        <p class="text-xs tracking-[0.25em] uppercase font-semibold text-brand-red animate-pulse">Drafting Digital Threads...</p>
+                        <p class="text-[10px] text-brand-muted tracking-wide max-w-xs">Our machine loom is weaving Alabaster silks with premium Crimson dyes. Please stand by.</p>
+                    </div>
+
+                    <!-- Render Container -->
+                    <div class="relative w-full h-full flex flex-col items-center justify-center z-10">
+                        <img id="ai-render-img" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80" 
+                             alt="AI Crafted Blueprint Specimen" class="w-full h-full object-cover rounded-sm transition-all duration-500 opacity-60">
+                        <div id="ai-img-overlay" class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-cream/90 via-brand-cream/40 to-transparent flex items-end justify-center p-6 text-center">
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-semibold text-brand-muted bg-brand-white/90 backdrop-blur-sm px-4 py-2 border border-brand-red/10 rounded-sm">
+                                Standard Capsule Lookbook Concept
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Red-accented Contact / Appointment Section -->
+<section id="contact-section" class="py-24 bg-brand-white border-t border-brand-red/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- Contact Info Panel -->
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <span class="text-xs font-semibold tracking-[0.25em] uppercase text-brand-red">Atelier Booking</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-light mt-2 tracking-wider">Connect With Us</h2>
+                    <p class="text-xs text-brand-muted mt-2">Book a private fitting or reach out for customer support concierge.</p>
+                    <div class="w-12 h-[1px] bg-brand-red mt-4"></div>
+                </div>
+
+                <!-- Info List details -->
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-brand-lightRed text-brand-red rounded-sm">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-charcoal">Main Atelier Hub</h4>
+                            <p class="text-xs text-brand-muted mt-1 font-light">424 Scarlet Boulevard, Fashion District, Milan, Italy</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-brand-lightRed text-brand-red rounded-sm">
+                            <i data-lucide="phone-call" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-charcoal">VIP Concierge & Styling</h4>
+                            <p class="text-xs text-brand-muted mt-1 font-light">+39 02 8765 4321</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="p-3 bg-brand-lightRed text-brand-red rounded-sm">
+                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-brand-charcoal">Press & Wholesale Inquiries</h4>
+                            <p class="text-xs text-brand-muted mt-1 font-light">concierge@fashionin.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Working Hours -->
+                <div class="bg-brand-lightRed border border-brand-red/5 p-6 rounded-sm">
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-brand-red mb-3">Atelier Availability</h4>
+                    <ul class="text-xs text-brand-charcoal space-y-2 font-light">
+                        <li class="flex justify-between"><span>Monday - Friday</span> <span>09:00 AM - 08:00 PM</span></li>
+                        <li class="flex justify-between"><span>Saturday</span> <span>10:00 AM - 06:00 PM</span></li>
+                        <li class="flex justify-between text-brand-red font-semibold"><span>Sunday</span> <span>Closed (Appointments Only)</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interactive Booking Form Panel -->
+            <div class="lg:col-span-7 bg-brand-cream border border-brand-red/10 p-8 sm:p-10 rounded-sm shadow-sm relative">
+                <span class="text-[10px] tracking-[0.25em] uppercase text-brand-red font-semibold mb-4 block">Reservation Form</span>
+                <h3 class="font-serif text-2xl font-light tracking-wide mb-6">Request Private Appointment</h3>
+                
+                <form id="appointment-form" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Full Name input -->
+                        <div>
+                            <label for="contact-name" class="block text-[10px] uppercase tracking-widest font-semibold text-brand-charcoal mb-2">Full Name *</label>
+                            <input type="text" id="contact-name" required placeholder="John Doe"
+                                   class="w-full px-4 py-3 bg-brand-white border border-brand-red/10 text-xs focus:outline-none focus:border-brand-red transition-colors rounded-sm uppercase tracking-wider">
+                        </div>
+                        <!-- Email Input -->
+                        <div>
+                            <label for="contact-email" class="block text-[10px] uppercase tracking-widest font-semibold text-brand-charcoal mb-2">Email Address *</label>
+                            <input type="email" id="contact-email" required placeholder="john@example.com"
+                                   class="w-full px-4 py-3 bg-brand-white border border-brand-red/10 text-xs focus:outline-none focus:border-brand-red transition-colors rounded-sm tracking-wider">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Appointment Date Selector -->
+                        <div>
+                            <label for="contact-date" class="block text-[10px] uppercase tracking-widest font-semibold text-brand-charcoal mb-2">Desired Fitting Date *</label>
+                            <input type="date" id="contact-date" required
+                                   class="w-full px-4 py-3 bg-brand-white border border-brand-red/10 text-xs focus:outline-none focus:border-brand-red transition-colors rounded-sm tracking-wider">
+                        </div>
+                        <!-- Preferred Line Segment -->
+                        <div>
+                            <label for="contact-interest" class="block text-[10px] uppercase tracking-widest font-semibold text-brand-charcoal mb-2">Preferred Capsule *</label>
+                            <select id="contact-interest" required
+                                    class="w-full px-4 py-3 bg-brand-white border border-brand-red/10 text-xs focus:outline-none focus:border-brand-red transition-colors rounded-sm uppercase tracking-wider">
+                                <option value="femme">Femme Scarlet (Women)</option>
+                                <option value="homme">Homme Ivory (Men)</option>
+                                <option value="bespoke">Bespoke Couture Custom Fitting</option>
+                                <option value="general">General Support inquiry</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Additional Details Text Area -->
+                    <div>
+                        <label for="contact-message" class="block text-[10px] uppercase tracking-widest font-semibold text-brand-charcoal mb-2">Special requests, Size, or Dietary preferences</label>
+                        <textarea id="contact-message" rows="4" placeholder="List any sizing questions or specific garments you would like prepared..."
+                                  class="w-full px-4 py-3 bg-brand-white border border-brand-red/10 text-xs focus:outline-none focus:border-brand-red transition-colors rounded-sm tracking-wider"></textarea>
+                    </div>
+
+                    <!-- Consent Box -->
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="contact-consent" required class="mt-1 accent-brand-red">
+                        <label for="contact-consent" class="text-[10px] text-brand-muted leading-relaxed uppercase tracking-wider">
+                            I consent to receiving text alerts regarding my appointment status from FASHION IN.
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-brand-white font-semibold text-xs tracking-[0.25em] uppercase transition-all duration-300 rounded-sm">
+                        Request Atelier Booking Slot
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Subscription/Newsletter Capture Section -->
+<section class="bg-brand-charcoal text-brand-white py-24 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-red/10 rounded-full filter blur-[100px]"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-zinc-800/20 rounded-full filter blur-[100px]"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 text-center z-10">
+        <span class="text-xs font-semibold tracking-[0.3em] uppercase text-brand-red mb-4 block">The Crimson Circle</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-light tracking-wide mb-4">Privileged Pre-Release Dispatches</h2>
+        <p class="max-w-md mx-auto text-xs sm:text-sm text-zinc-400 font-light tracking-wide mb-10 leading-relaxed">
+            Register to unlock private lookbook access, complimentary milan tailoring vouchers, and priority checkout privileges.
+        </p>
+        
+        <form id="newsletter-form" class="max-w-lg mx-auto flex flex-col sm:flex-row gap-3">
+            <input type="email" placeholder="Enter your email address" required
+                   class="flex-1 px-5 py-4 bg-zinc-900 border border-zinc-800 text-sm focus:outline-none focus:border-brand-red placeholder-zinc-500 transition-colors uppercase tracking-widest text-xs">
+            <button type="submit" class="px-8 py-4 bg-brand-red hover:bg-brand-redHover text-brand-white text-xs font-semibold tracking-[0.25em] uppercase transition-colors duration-300">
+                Join The Circle
+            </button>
+        </form>
+        <p class="text-[10px] text-zinc-500 mt-4 tracking-wider">No compromises. Opt-out anytime with one click.</p>
+    </div>
+</section>
+
+<!-- Complete Responsive Luxury Footer -->
+<footer class="bg-brand-charcoal text-zinc-400 py-16 text-xs border-t border-zinc-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <!-- Brand Info -->
+        <div class="space-y-4">
+            <h3 class="font-serif text-xl tracking-[0.25em] text-brand-white uppercase font-bold text-brand-red">FASHION IN</h3>
+            <p class="leading-relaxed font-light text-zinc-500">
+                An international haute couture design house celebrating premium contrasts, scarlet tailoring, sustainable Milanese fabrics, and luxury garments.
+            </p>
+            <div class="flex space-x-4 pt-2">
+                <a href="#" class="hover:text-brand-red transition-colors duration-200" aria-label="Instagram Profile"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                <a href="#" class="hover:text-brand-red transition-colors duration-200" aria-label="Pinterest Board"><i data-lucide="pinterest" class="w-4 h-4 text-xs font-bold font-serif">P</i></a>
+                <a href="#" class="hover:text-brand-red transition-colors duration-200" aria-label="Twitter Feed"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+
+        <!-- Collections Column -->
+        <div class="space-y-3">
+            <h4 class="font-semibold uppercase text-brand-white tracking-widest">Sartorial Collections</h4>
+            <ul class="space-y-2 font-light">
+                <li><a href="#collections" class="hover:text-brand-red transition-colors">Scarlet Femme Dresses</a></li>
+                <li><a href="#collections" class="hover:text-brand-red transition-colors">Alabaster Homme Suits</a></li>
+                <li><a href="#collections" class="hover:text-brand-red transition-colors">Fine Accessories & Heeled Shoes</a></li>
+                <li><a href="#new-arrivals" class="hover:text-brand-red transition-colors">Archival Pre-Release</a></li>
+            </ul>
+        </div>
+
+        <!-- Client Concierge -->
+        <div class="space-y-3">
+            <h4 class="font-semibold uppercase text-brand-white tracking-widest">Client Service</h4>
+            <ul class="space-y-2 font-light">
+                <li><a href="#contact-section" class="hover:text-brand-red transition-colors">Atelier Styling Bookings</a></li>
+                <li><a href="#contact-section" class="hover:text-brand-red transition-colors">Complimentary Cleaning Services</a></li>
+                <li><a href="#" class="hover:text-brand-red transition-colors">Return Policy & Tracking</a></li>
+                <li><a href="#" class="hover:text-brand-red transition-colors">Corporate Gifting</a></li>
+            </ul>
+        </div>
+
+        <!-- Corporate / Transparency -->
+        <div class="space-y-3">
+            <h4 class="font-semibold uppercase text-brand-white tracking-widest">The Atelier</h4>
+            <ul class="space-y-2 font-light">
+                <li><a href="#brand-story" class="hover:text-brand-red transition-colors">Traceability Journey</a></li>
+                <li><a href="#contact-section" class="hover:text-brand-red transition-colors">In-house Tailoring Standards</a></li>
+                <li><a href="#" class="hover:text-brand-red transition-colors">Careers & Internships</a></li>
+                <li><a href="#" class="hover:text-brand-red transition-colors">Sustainability Certs</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Fine Print / Under-Footer -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-600">
+        <p>&copy; 2026 FASHION IN SA. All rights reserved.</p>
+        <div class="flex space-x-6">
+            <a href="#" class="hover:text-brand-red">Privacy Policy</a>
+            <a href="#" class="hover:text-brand-red">Terms of Use</a>
+            <a href="#" class="hover:text-brand-red">Accessibility Registry</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Off-canvas Cart Drawer Component -->
+<div id="cart-drawer" class="fixed inset-0 z-50 bg-brand-charcoal/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+    <div class="fixed top-0 right-0 w-96 max-w-full h-full bg-brand-white p-6 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <!-- Cart Drawer Header -->
+        <div class="flex justify-between items-center border-b border-brand-red/10 pb-4">
+            <h3 class="font-serif text-lg tracking-[0.1em] uppercase flex items-center gap-2 font-semibold">
+                Your Bag <span id="cart-drawer-count" class="text-xs bg-brand-red text-brand-white rounded-full px-2 py-0.5 font-sans font-semibold">0</span>
+            </h3>
+            <button id="cart-drawer-close" class="p-2 hover:text-brand-red transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Scrollable Cart Items Container -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto py-4 space-y-4">
+            <!-- Dynamic Cart Items Rendered via JavaScript -->
+            <div id="empty-cart-state" class="h-full flex flex-col items-center justify-center text-center p-8 space-y-4">
+                <i data-lucide="shopping-bag" class="w-12 h-12 text-zinc-300"></i>
+                <p class="text-sm font-light text-brand-muted">Your curated canvas is empty.</p>
+                <button onclick="toggleCartDrawer()" class="px-6 py-2 bg-brand-red text-brand-white text-[10px] tracking-widest uppercase hover:bg-brand-charcoal transition-colors">
+                    Browse Capsule
+                </button>
+            </div>
+        </div>
+
+        <!-- Cart Footer / Calculation & Checkout -->
+        <div id="cart-checkout-section" class="border-t border-brand-red/10 pt-6 space-y-4 hidden">
+            <div class="flex justify-between items-center text-xs tracking-wider uppercase font-semibold">
+                <span>Subtotal</span>
+                <span id="cart-subtotal" class="text-sm font-sans text-brand-red">$0.00</span>
+            </div>
+            <p class="text-[10px] text-brand-muted tracking-wide">Taxes and carbon-neutral express delivery computed at checkout.</p>
+            <div class="space-y-2">
+                <button onclick="triggerCheckout()" class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-brand-white text-xs tracking-[0.2em] uppercase font-semibold transition-colors duration-300">
+                    Secure Checkout
+                </button>
+                <button onclick="toggleCartDrawer()" class="w-full py-2 text-center text-[10px] uppercase tracking-widest hover:text-brand-red transition-colors">
+                    Continue Exploring
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dynamic Quick View Modal -->
+<div id="quickview-modal" class="fixed inset-0 z-50 bg-brand-charcoal/65 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-brand-cream w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl relative rounded-sm flex flex-col md:flex-row">
+        <!-- Close Button -->
+        <button id="quickview-close" class="absolute top-4 right-4 z-10 p-2 bg-brand-white/80 backdrop-blur-md rounded-full text-brand-charcoal hover:text-brand-red transition-colors shadow-sm">
+            <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Product Image Showcase -->
+        <div class="md:w-1/2 aspect-[4/5] md:aspect-auto relative bg-zinc-100">
+            <img id="qv-image" src="" alt="Selected Product Detail" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Product Details / Configurator Panel -->
+        <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <div>
+                <span id="qv-category" class="text-[10px] tracking-[0.2em] uppercase text-brand-red font-semibold block mb-2"></span>
+                <h3 id="qv-title" class="font-serif text-2xl sm:text-3xl font-light tracking-wide text-brand-charcoal mb-2"></h3>
+                <span id="qv-price" class="text-lg font-sans font-semibold text-brand-red block mb-4"></span>
+                <div class="w-12 h-[1px] bg-brand-red mb-6"></div>
+                <p id="qv-description" class="text-xs sm:text-sm text-brand-muted font-light leading-relaxed mb-6"></p>
+
+                <!-- Color Swatch Configurator -->
+                <div class="space-y-2 mb-6">
+                    <span class="text-[10px] uppercase tracking-widest font-semibold block text-brand-charcoal">Selected Fabric Tone:</span>
+                    <div class="flex gap-2.5">
+                        <button class="w-6 h-6 rounded-full bg-red-600 ring-2 ring-offset-2 ring-brand-red" aria-label="Crimson Red"></button>
+                        <button class="w-6 h-6 rounded-full bg-[#FAF9F6] border border-zinc-300 ring-2 ring-offset-2 ring-transparent hover:ring-zinc-400" aria-label="Alabaster White"></button>
+                        <button class="w-6 h-6 rounded-full bg-zinc-950 ring-2 ring-offset-2 ring-transparent hover:ring-zinc-400" aria-label="Midnight Obsidian"></button>
+                    </div>
+                </div>
+
+                <!-- Size selector -->
+                <div class="space-y-2 mb-6">
+                    <div class="flex justify-between text-[10px] uppercase tracking-widest font-semibold text-brand-charcoal">
+                        <span>Select Size:</span>
+                        <a href="#" class="underline text-brand-red hover:text-brand-redHover">Fit Guidelines</a>
+                    </div>
+                    <div class="grid grid-cols-4 gap-2">
+                        <button class="size-btn py-2.5 border border-brand-red/10 hover:border-brand-red text-xs font-semibold transition-colors bg-brand-white">XS</button>
+                        <button class="size-btn py-2.5 border border-brand-red/10 hover:border-brand-red text-xs font-semibold transition-colors bg-brand-white">S</button>
+                        <button class="size-btn py-2.5 border border-brand-red hover:border-brand-red text-xs font-semibold transition-colors bg-brand-white select-border border-brand-red">M</button>
+                        <button class="size-btn py-2.5 border border-brand-red/10 hover:border-brand-red text-xs font-semibold transition-colors bg-brand-white">L</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add to Cart From Modal -->
+            <div>
+                <button id="qv-add-btn" class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-brand-white text-xs tracking-[0.25em] uppercase font-semibold transition-all duration-300 rounded-sm">
+                    Add Specimen To Bag
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Overlay Fullscreen Search Dialog -->
+<div id="search-overlay" class="fixed inset-0 z-50 bg-brand-charcoal/95 backdrop-blur-md flex items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-300">
+    <button id="search-close" class="absolute top-8 right-8 p-3 text-brand-white hover:text-brand-red transition-colors">
+        <i data-lucide="x" class="w-7 h-7"></i>
+    </button>
+    <div class="w-full max-w-2xl text-center space-y-8">
+        <span class="text-xs font-semibold tracking-[0.25em] uppercase text-brand-red block">Search FASHION IN Collection</span>
+        <div class="relative">
+            <input type="text" id="search-input" placeholder="Search (e.g., Blazer, Dress, Red, White, Boots...)"
+                   class="w-full bg-transparent border-b border-white/20 pb-4 text-2xl sm:text-3xl text-center text-brand-white placeholder-white/20 focus:outline-none focus:border-brand-red transition-all duration-300 uppercase tracking-widest font-light">
+            <div id="search-results-feedback" class="mt-4 text-xs tracking-wider text-zinc-500 font-light italic">Start typing to explore instantly...</div>
+        </div>
+    </div>
+</div>
+
+<!-- Wishlist Drawer Component -->
+<div id="wishlist-drawer" class="fixed inset-0 z-50 bg-brand-charcoal/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+    <div class="fixed top-0 right-0 w-96 max-w-full h-full bg-brand-white p-6 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+        <!-- Drawer Header -->
+        <div class="flex justify-between items-center border-b border-brand-red/10 pb-4">
+            <h3 class="font-serif text-lg tracking-[0.1em] uppercase flex items-center gap-2 font-semibold">
+                Your Wishlist
+            </h3>
+            <button onclick="toggleWishlistDrawer()" class="p-2 hover:text-brand-red transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Scrollable Wishlist Items -->
+        <div id="wishlist-items-container" class="flex-1 overflow-y-auto py-4 space-y-4">
+            <div id="empty-wishlist-state" class="h-full flex flex-col items-center justify-center text-center p-8 space-y-4">
+                <i data-lucide="heart" class="w-12 h-12 text-zinc-300"></i>
+                <p class="text-sm font-light text-brand-muted">You have saved no items.</p>
+                <button onclick="toggleWishlistDrawer()" class="px-6 py-2 bg-brand-red text-brand-white text-[10px] tracking-widest uppercase hover:bg-brand-charcoal transition-colors">
+                    Explore Curations
+                </button>
+            </div>
+        </div>
+
+        <div class="border-t border-brand-red/10 pt-6">
+            <button onclick="addAllWishlistToCart()" class="w-full py-4 bg-brand-red hover:bg-brand-redHover text-brand-white text-xs tracking-[0.2em] uppercase font-semibold transition-colors duration-300">
+                Move Wishlist To Bag
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Dynamic Toast Notification Panel -->
+<div id="toast-notification" class="fixed bottom-6 right-6 z-[100] bg-brand-charcoal text-brand-white py-4 px-6 rounded shadow-2xl flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 max-w-sm pointer-events-none border border-brand-red/20">
+    <span class="text-brand-red"><i data-lucide="check-circle-2" class="w-5 h-5"></i></span>
+    <p id="toast-message" class="text-xs uppercase tracking-widest font-semibold"></p>
+</div>
+
+
+<!-- Personal Stylist floating button -->
+<button id="ai-stylist-btn" onclick="toggleAIStylistDrawer()" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-brand-red hover:bg-brand-redHover text-brand-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 border border-brand-white/20 group">
+    <i data-lucide="sparkles" class="w-6 h-6 group-hover:rotate-12 transition-transform duration-300"></i>
+    <span class="absolute -top-1 -right-1 w-4 h-4 bg-brand-white text-brand-red text-[8px] font-bold rounded-full flex items-center justify-center shadow">AI</span>
+</button>
+
+<!-- Personal Stylist Sidebar Dialogue Drawer -->
+<div id="ai-stylist-drawer" class="fixed inset-0 z-50 bg-brand-charcoal/40 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+    <div class="fixed top-0 right-0 w-96 max-w-full h-full bg-brand-cream p-6 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 border-l border-brand-red/10">
+        
+        <!-- Drawer Header -->
+        <div class="flex justify-between items-center border-b border-brand-red/10 pb-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-brand-red text-brand-white rounded-full">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <h3 class="font-serif text-sm tracking-[0.1em] uppercase font-bold text-brand-charcoal">Atelier Personal Stylist</h3>
+                    <p class="text-[9px] uppercase tracking-wider text-brand-red font-semibold">Concierge Fashion Expert</p>
+                </div>
+            </div>
+            <button onclick="toggleAIStylistDrawer()" class="p-2 hover:text-brand-red transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Chat messages stream container -->
+        <div id="ai-chat-messages" class="flex-1 overflow-y-auto py-4 space-y-4">
+            <!-- Initial Stylist message -->
+            <div class="flex items-start gap-3 max-w-[85%]">
+                <div class="w-6 h-6 bg-brand-red text-brand-white text-[9px] font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-1">AI</div>
+                <div class="bg-brand-white p-3 rounded-sm border border-brand-red/10 text-xs text-brand-muted leading-relaxed shadow-sm">
+                    <p class="mb-2">Benvenuto to the FASHION IN digital atelier.</p>
+                    <p class="mb-2">I am your personal styling concierge, trained in the core tenets of Milanese elegance.</p>
+                    <p>Ask me how to style a specific capsule piece, plan your coordinate look, or weave contrast elements!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dialog query shortcuts panel -->
+        <div class="border-t border-brand-red/10 pt-4 space-y-2">
+            <p class="text-[9px] uppercase tracking-widest font-semibold text-brand-muted">Ask Concierge:</p>
+            <div class="flex flex-wrap gap-1.5">
+                <button onclick="fillAndSendQuery('How do I style a white organic blazer with crimson elements?')" class="text-[9px] text-brand-charcoal bg-brand-white px-2.5 py-1.5 border border-brand-red/10 rounded-sm hover:border-brand-red hover:text-brand-red transition-colors font-medium">Blazer Styling</button>
+                <button onclick="fillAndSendQuery('Suggest a high-contrast evening look for a Crimson Red gala')" class="text-[9px] text-brand-charcoal bg-brand-white px-2.5 py-1.5 border border-brand-red/10 rounded-sm hover:border-brand-red hover:text-brand-red transition-colors font-medium">Gala Look</button>
+                <button onclick="fillAndSendQuery('Explain the design doctrine of Alabaster and Crimson')" class="text-[9px] text-brand-charcoal bg-brand-white px-2.5 py-1.5 border border-brand-red/10 rounded-sm hover:border-brand-red hover:text-brand-red transition-colors font-medium">Core doctrine</button>
+            </div>
+        </div>
+
+        <!-- Interactive Typing field inputs -->
+        <div class="pt-4 flex gap-2">
+            <input type="text" id="ai-chat-input" onkeydown="handleAIStylistKeypress(event)"
+                   class="flex-1 px-4 py-3 bg-brand-white border border-brand-red/10 text-xs focus:outline-none focus:border-brand-red transition-colors rounded-sm tracking-wider uppercase" 
+                   placeholder="DESCRIBE YOUR COUTURE PUZZLE...">
+            <button onclick="sendAIStylistMessage()" class="p-3 bg-brand-red hover:bg-brand-redHover text-brand-white transition-all duration-200 rounded-sm flex items-center justify-center">
+                <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+const PRODUCTS = [
+    {
+        id: 'p1',
+        title: 'Crimson Silhouette Evening Gown',
+        category: 'women',
+        price: 340.00,
+        image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=500&q=80',
+        description: 'Vibrant scarlet red evening dress featuring elegant structural drape, a soft plunge neckline, and organic silk blend fibers.',
+        isNew: true
+    },
+    {
+        id: 'p2',
+        title: 'Asymmetric White Trench',
+        category: 'women',
+        price: 420.00,
+        image: 'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=500&q=80',
+        description: 'Crisp white structured trenchcoat with dynamic asymmetric double-breasted buttoning, horn details, and high-collar design.',
+        isNew: true
+    },
+    {
+        id: 'p3',
+        title: 'Alabaster Ivory Suit Blazer',
+        category: 'men',
+        price: 495.00,
+        image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=500&q=80',
+        description: 'Premium heavy organic wool suit jacket in flawless off-white. Peak lapels, side vents, and custom silk lining.',
+        isNew: true
+    },
+    {
+        id: 'p4',
+        title: 'Structured Cherry Boots',
+        category: 'accessories',
+        price: 280.00,
+        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=500&q=80',
+        description: 'Handcrafted real leather heeled boots dyed in deep cherry scarlet. Sturdy heel base and gold side zip buckle.',
+        isNew: false
+    },
+    {
+        id: 'p5',
+        title: 'Bespoke Crimson Wool Overcoat',
+        category: 'men',
+        price: 620.00,
+        image: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=500&q=80',
+        description: 'Stunning full-length heavy cashmere-wool blend coat in high-contrast ruby red. Structured shoulders and deep inner pockets.',
+        isNew: false
+    },
+    {
+        id: 'p6',
+        title: 'Sculpted Alabaster Denim Jacket',
+        category: 'women',
+        price: 245.00,
+        image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=500&q=80',
+        description: 'Raw textured denim jacket finished in milk white. Detailed double-stitched red thread highlights along key seams.',
+        isNew: true
+    },
+    {
+        id: 'p7',
+        title: 'Satin Red Hair Wrap & Accents',
+        category: 'accessories',
+        price: 85.00,
+        image: 'https://images.unsplash.com/photo-1583209814683-c023dd293cc6?auto=format&fit=crop&w=500&q=80',
+        description: 'Luxurious heavy satin silk accessory wrap. Versatile layout can be worn as a scarf, headband, or structured handbag accent.',
+        isNew: false
+    },
+    {
+        id: 'p8',
+        title: 'Ivory Pleated Lounge Trousers',
+        category: 'women',
+        price: 190.00,
+        image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=500&q=80',
+        description: 'Flowy wide-leg design finished in breathable linen-cotton. Tailored waist folds provide comfortable wear with striking lines.',
+        isNew: false
+    }
+];
+
+let cart = [];
+let wishlist = [];
+let activeCategory = 'all';
+
+// Initialize system and icons
+window.onload = function() {
+    lucide.createIcons();
+    renderProducts();
+    setupEventListeners();
+};
+
+function setupEventListeners() {
+    // Menu Drawers Handlers
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+    const cartBtn = document.getElementById('cart-btn');
+    const cartCloseBtn = document.getElementById('cart-drawer-close');
+    
+    // Toggle Mobile Navigation
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuDrawer.classList.remove('opacity-0', 'pointer-events-none');
+        mobileMenuDrawer.firstElementChild.classList.remove('-translate-x-full');
+    });
+    
+    mobileMenuClose.addEventListener('click', () => {
+        mobileMenuDrawer.classList.add('opacity-0', 'pointer-events-none');
+        mobileMenuDrawer.firstElementChild.classList.add('-translate-x-full');
+    });
+
+    // Close mobile drawer on link click
+    mobileMenuDrawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuDrawer.classList.add('opacity-0', 'pointer-events-none');
+            mobileMenuDrawer.firstElementChild.classList.add('-translate-x-full');
+        });
+    });
+
+    // Toggle Cart Drawer
+    cartBtn.addEventListener('click', toggleCartDrawer);
+    cartCloseBtn.addEventListener('click', toggleCartDrawer);
+
+    // Dynamic Header backdrop transition on scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            nav.classList.remove('bg-brand-white/90');
+            nav.classList.add('bg-brand-white/95', 'shadow-sm');
+        } else {
+            nav.classList.remove('bg-brand-white/95', 'shadow-sm');
+            nav.classList.add('bg-brand-white/90');
+        }
+    });
+
+    // Quickview modal events
+    document.getElementById('quickview-close').addEventListener('click', closeQuickView);
+    document.getElementById('quickview-modal').addEventListener('click', (e) => {
+        if(e.target === document.getElementById('quickview-modal')) closeQuickView();
+    });
+
+    // Search Box overlay events
+    document.getElementById('search-btn').addEventListener('click', toggleSearchOverlay);
+    document.getElementById('search-close').addEventListener('click', toggleSearchOverlay);
+    document.getElementById('search-input').addEventListener('input', executeLiveSearch);
+
+    // Newsletter Submission interceptor
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        showToast("Welcome to FASHION IN Premium Circle!");
+        e.target.reset();
+    });
+
+    // Booking appointment form interceptor
+    document.getElementById('appointment-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const dateInput = document.getElementById('contact-date').value;
+        const nameInput = document.getElementById('contact-name').value;
+        showToast(`Thank you ${nameInput}, reservation requested for ${dateInput}!`);
+        e.target.reset();
+    });
+
+    // Quick View size selectors active state swap
+    const sizeBtns = document.querySelectorAll('.size-btn');
+    sizeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sizeBtns.forEach(b => b.classList.remove('border-brand-red'));
+            btn.classList.add('border-brand-red');
+        });
+    });
+}
+
+function setCategoryFilter(category) {
+    activeCategory = category;
+    
+    // Update active visual button state
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        if(btn.dataset.cat === category) {
+            btn.classList.add('bg-brand-red', 'text-brand-white', 'border-brand-red');
+            btn.classList.remove('border-brand-red/10');
+        } else {
+            btn.classList.remove('bg-brand-red', 'text-brand-white', 'border-brand-red');
+            btn.classList.add('border-brand-red/10');
+        }
+    });
+
+    renderProducts();
+
+    // Smooth scroll down to shop if filtering from curations cards
+    const gridSection = document.getElementById('shop-all');
+    if (gridSection) {
+        gridSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function renderProducts(productsToRender = null) {
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = '';
+
+    const list = productsToRender || (activeCategory === 'all' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === activeCategory));
+
+    if (list.length === 0) {
+        grid.innerHTML = `
+            <div class="col-span-full py-16 text-center">
+                <p class="text-sm font-light text-brand-muted">No items match your selected filter.</p>
+            </div>
+        `;
+        return;
+    }
+
+    list.forEach(prod => {
+        const isLiked = wishlist.includes(prod.id);
+        const cardHtml = `
+            <div class="group flex flex-col justify-between h-full bg-brand-white relative shadow-sm border border-brand-red/5 p-4 rounded-sm transition-all duration-300 hover:shadow-md">
+                <div class="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-4 rounded-sm">
+                    <!-- Image Hover Zoom Effect -->
+                    <img src="${prod.image}" alt="${prod.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    
+                    <!-- Dynamic badges (e.g. New specimen tag) -->
+                    ${prod.isNew ? `<span class="absolute top-3 left-3 px-2.5 py-1 bg-brand-red text-brand-white text-[9px] tracking-[0.15em] uppercase font-semibold">Capsule New</span>` : ''}
+                    
+                    <!-- Quick-add / Quick View triggers overlay -->
+                    <div class="absolute inset-0 bg-brand-charcoal/10 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-center pb-6">
+                        <button onclick="openQuickView('${prod.id}')" class="px-5 py-3 bg-brand-white text-brand-charcoal text-[10px] tracking-[0.2em] font-semibold uppercase hover:bg-brand-red hover:text-brand-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 shadow-lg">
+                            Quick Inspect
+                        </button>
+                    </div>
+
+                    <!-- Add/Remove Wishlist overlay icon button -->
+                    <button onclick="toggleWishlistItem('${prod.id}')" class="absolute top-3 right-3 p-2 rounded-full bg-brand-white/80 backdrop-blur-md text-brand-charcoal hover:text-brand-red transition-colors shadow-sm">
+                        <i data-lucide="heart" class="w-4 h-4 ${isLiked ? 'fill-brand-red stroke-brand-red text-brand-red' : ''}"></i>
+                    </button>
+                </div>
+
+                <!-- Product Text Core Information -->
+                <div class="flex-1 flex flex-col justify-between">
+                    <div>
+                        <span class="text-[10px] uppercase tracking-[0.15em] text-brand-red font-semibold">${prod.category}</span>
+                        <h3 class="font-serif text-sm font-light text-brand-charcoal group-hover:text-brand-red transition-colors tracking-wide mt-1">${prod.title}</h3>
+                    </div>
+                    <div class="flex justify-between items-center mt-3 pt-3 border-t border-brand-red/5">
+                        <span class="text-xs font-semibold tracking-wider text-brand-charcoal">$${prod.price.toFixed(2)}</span>
+                        <button onclick="addToCart('${prod.id}')" class="text-[10px] tracking-widest font-semibold uppercase text-brand-charcoal hover:text-brand-red transition-colors flex items-center gap-1.5">
+                            Add To Bag <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        grid.innerHTML += cardHtml;
+    });
+
+    // Re-initialize Lucide Icons on the dynamic elements
+    lucide.createIcons();
+}
+
+function toggleCartDrawer() {
+    const drawer = document.getElementById('cart-drawer');
+    drawer.classList.toggle('opacity-0');
+    drawer.classList.toggle('pointer-events-none');
+    drawer.firstElementChild.classList.toggle('translate-x-full');
+}
+
+function addToCart(id) {
+    const product = PRODUCTS.find(p => p.id === id);
+    if (!product) return;
+
+    // Check if item already exists in the cart structure
+    const existing = cart.find(item => item.id === id);
+    if (existing) {
+        existing.qty += 1;
+    } else {
+        cart.push({ ...product, qty: 1 });
+    }
+
+    updateCartUI();
+    showToast(`${product.title} Added to Bag`);
+}
+
+function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
+    updateCartUI();
+    showToast("Item Removed");
+}
+
+function updateQty(id, change) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+
+    item.qty += change;
+    if (item.qty <= 0) {
+        removeFromCart(id);
+    } else {
+        updateCartUI();
+    }
+}
+
+function updateCartUI() {
+    const cartCount = document.getElementById('cart-count');
+    const drawerCount = document.getElementById('cart-drawer-count');
+    const container = document.getElementById('cart-items-container');
+    const checkoutSec = document.getElementById('cart-checkout-section');
+    const emptyState = document.getElementById('empty-cart-state');
+    const subtotalText = document.getElementById('cart-subtotal');
+
+    const totalQty = cart.reduce((acc, curr) => acc + curr.qty, 0);
+    cartCount.textContent = totalQty;
+    drawerCount.textContent = totalQty;
+
+    // Dynamic rendering of items
+    if(cart.length === 0) {
+        container.innerHTML = '';
+        container.appendChild(emptyState);
+        emptyState.classList.remove('hidden');
+        checkoutSec.classList.add('hidden');
+    } else {
+        emptyState.classList.add('hidden');
+        checkoutSec.classList.remove('hidden');
+        container.innerHTML = '';
+
+        let subtotal = 0;
+        cart.forEach(item => {
+            subtotal += item.price * item.qty;
+            const element = `
+                <div class="flex items-center gap-4 bg-brand-white p-3 border border-brand-red/5 rounded-sm">
+                    <img src="${item.image}" alt="${item.title}" class="w-16 aspect-[3/4] object-cover rounded-sm">
+                    <div class="flex-1 min-w-0">
+                        <span class="text-[9px] uppercase tracking-wider text-brand-red font-semibold">${item.category}</span>
+                        <h4 class="text-xs font-serif font-light truncate text-brand-charcoal">${item.title}</h4>
+                        <span class="text-xs font-semibold text-brand-red block mt-1">$${(item.price * item.qty).toFixed(2)}</span>
+                        
+                        <!-- Increment / Decrement adjustments -->
+                        <div class="flex items-center gap-2 mt-2">
+                            <button onclick="updateQty('${item.id}', -1)" class="w-6 h-6 rounded border border-brand-red/10 flex items-center justify-center hover:bg-brand-lightRed transition-colors">
+                                <i data-lucide="minus" class="w-3 h-3"></i>
+                            </button>
+                            <span class="text-xs font-semibold w-4 text-center">${item.qty}</span>
+                            <button onclick="updateQty('${item.id}', 1)" class="w-6 h-6 rounded border border-brand-red/10 flex items-center justify-center hover:bg-brand-lightRed transition-colors">
+                                <i data-lucide="plus" class="w-3 h-3"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button onclick="removeFromCart('${item.id}')" class="p-2 text-zinc-400 hover:text-brand-red transition-colors">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            `;
+            container.innerHTML += element;
+        });
+
+        subtotalText.textContent = `$${subtotal.toFixed(2)}`;
+    }
+    
+    // Refresh Icons on injected UI components
+    lucide.createIcons();
+}
+
+function toggleWishlistDrawer() {
+    const drawer = document.getElementById('wishlist-drawer');
+    drawer.classList.toggle('opacity-0');
+    drawer.classList.toggle('pointer-events-none');
+    drawer.firstElementChild.classList.toggle('translate-x-full');
+}
+
+function toggleWishlistItem(id) {
+    const index = wishlist.indexOf(id);
+    if(index > -1) {
+        wishlist.splice(index, 1);
+        showToast("Removed From Wishlist");
+    } else {
+        wishlist.push(id);
+        showToast("Saved To Wishlist");
+    }
+    updateWishlistUI();
+    renderProducts();
+}
+
+function updateWishlistUI() {
+    const countIndicator = document.getElementById('wishlist-count');
+    const container = document.getElementById('wishlist-items-container');
+    const emptyState = document.getElementById('empty-wishlist-state');
+
+    if(wishlist.length > 0) {
+        countIndicator.classList.remove('hidden');
+        emptyState.classList.add('hidden');
+        container.innerHTML = '';
+
+        wishlist.forEach(id => {
+            const product = PRODUCTS.find(p => p.id === id);
+            if(product) {
+                const element = `
+                    <div class="flex items-center gap-4 bg-brand-white p-3 border border-brand-red/5 rounded-sm">
+                        <img src="${product.image}" alt="${product.title}" class="w-16 aspect-[3/4] object-cover rounded-sm">
+                        <div class="flex-1 min-w-0">
+                            <span class="text-[9px] uppercase tracking-wider text-brand-red font-semibold">${product.category}</span>
+                            <h4 class="text-xs font-serif font-light truncate text-brand-charcoal">${product.title}</h4>
+                            <span class="text-xs font-semibold text-brand-red block mt-1">$${product.price.toFixed(2)}</span>
+                        </div>
+                        <div class="flex flex-col gap-2 items-end">
+                            <button onclick="addToCart('${product.id}'); toggleWishlistItem('${product.id}');" class="p-2 text-brand-charcoal hover:text-brand-red transition-colors" title="Move to Bag">
+                                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                            </button>
+                            <button onclick="toggleWishlistItem('${product.id}')" class="p-2 text-zinc-400 hover:text-brand-red transition-colors">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += element;
+            }
+        });
+    } else {
+        countIndicator.classList.add('hidden');
+        container.innerHTML = '';
+        container.appendChild(emptyState);
+        emptyState.classList.remove('hidden');
+    }
+    lucide.createIcons();
+}
+
+function addAllWishlistToCart() {
+    if(wishlist.length === 0) {
+        showToast("Your Wishlist is currently empty");
+        return;
+    }
+    wishlist.forEach(id => addToCart(id));
+    wishlist = [];
+    updateWishlistUI();
+    renderProducts();
+    toggleWishlistDrawer();
+    toggleCartDrawer();
+}
+
+function openQuickView(id) {
+    const product = PRODUCTS.find(p => p.id === id);
+    if (!product) return;
+
+    // Map database dynamic configurations
+    document.getElementById('qv-image').src = product.image;
+    document.getElementById('qv-category').textContent = product.category;
+    document.getElementById('qv-title').textContent = product.title;
+    document.getElementById('qv-price').textContent = `$${product.price.toFixed(2)}`;
+    document.getElementById('qv-description').textContent = product.description;
+
+    // Overwrite the dynamic buy button click scope context
+    const addBtn = document.getElementById('qv-add-btn');
+    addBtn.setAttribute('onclick', `addToCart('${product.id}'); closeQuickView();`);
+
+    // Reveal modal frame element
+    const modal = document.getElementById('quickview-modal');
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+}
+
+function closeQuickView() {
+    const modal = document.getElementById('quickview-modal');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+}
+
+function toggleSearchOverlay() {
+    const overlay = document.getElementById('search-overlay');
+    overlay.classList.toggle('opacity-0');
+    overlay.classList.toggle('pointer-events-none');
+    if(!overlay.classList.contains('pointer-events-none')) {
+        document.getElementById('search-input').focus();
+    }
+}
+
+function executeLiveSearch(e) {
+    const query = e.target.value.toLowerCase().trim();
+    const feedback = document.getElementById('search-results-feedback');
+
+    if(query.length === 0) {
+        feedback.textContent = 'Start typing to explore instantly...';
+        renderProducts();
+        return;
+    }
+
+    const matched = PRODUCTS.filter(p => 
+        p.title.toLowerCase().includes(query) || 
+        p.category.toLowerCase().includes(query) ||
+        p.description.toLowerCase().includes(query)
+    );
+
+    feedback.textContent = `Found ${matched.length} clothing item matches`;
+    renderProducts(matched);
+
+    // Auto-scroll screen window down to filtered section area
+    const gridSection = document.getElementById('shop-all');
+    if (gridSection) {
+        gridSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast-notification');
+    const msgElement = document.getElementById('toast-message');
+    msgElement.textContent = message;
+
+    // Display animation sequence
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    // Auto close sequence delay timer
+    setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 3500);
+}
+
+function triggerCheckout() {
+    showToast("Opening FASHION IN Secure Direct Checkout...");
+    setTimeout(() => {
+        showToast("Thank you! Order Dispatched Successfully!");
+        cart = [];
+        updateCartUI();
+        toggleCartDrawer();
+    }, 2000);
+}
+
+
+
+/**
+ * Text Generation call via gemini-3-flash-preview model.
+ * Automatically utilizes the active API Key in canvas environment.
+ */
+async function callGeminiText(prompt, systemInstruction = "") {
+    const apiKey = ""; // Left empty to automatically resolve to Canvas active environment key
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+    const payload = {
+        contents: [{ parts: [{ text: prompt }] }]
+    };
+
+    if (systemInstruction) {
+        payload.systemInstruction = {
+            parts: [{ text: systemInstruction }]
+        };
+    }
+
+    let retries = 3;
+    let delay = 1000;
+
+    while (retries > 0) {
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Text API status error: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const textResponse = result?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (textResponse) {
+                return textResponse;
+            }
+            throw new Error("Empty text candidate payload received");
+        } catch (err) {
+            retries--;
+            if (retries === 0) {
+                console.error("Gemini Text call failed completely after retries:", err);
+                throw err;
+            }
+            // Exponential backoff to avoid limits
+            await new Promise(res => setTimeout(res, delay));
+            delay *= 2;
+        }
+    }
+}
+
+/**
+ * Image Generation call via imagen-4.0-generate-001 model.
+ * Renders high-fidelity dress sketches on-demand.
+ */
+async function callGeminiImage(prompt) {
+    const apiKey = ""; // Left empty to automatically resolve to Canvas active environment key
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
+
+    const payload = {
+        instances: [{ prompt: prompt }],
+        parameters: {
+            sampleCount: 1,
+            aspectRatio: "3:4"
+        }
+    };
+
+    let retries = 3;
+    let delay = 1000;
+
+    while (retries > 0) {
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Imagen API status error: ${response.status}`);
+            }
+
+            const result = await response.json();
+            const rawBase64 = result?.predictions?.[0]?.bytesBase64Encoded;
+            if (rawBase64) {
+                return `data:image/png;base64,${rawBase64}`;
+            }
+            throw new Error("No pixel bytes returned in the prediction list");
+        } catch (err) {
+            retries--;
+            if (retries === 0) {
+                console.error("Imagen API call failed completely after retries:", err);
+                throw err;
+            }
+            await new Promise(res => setTimeout(res, delay));
+            delay *= 2;
+        }
+    }
+}
+
+
+function fillAIPrompt(text) {
+    document.getElementById('ai-prompt-input').value = text;
+}
+
+async function generateAIDesign() {
+    const inputElement = document.getElementById('ai-prompt-input');
+    const rawPrompt = inputElement.value.trim();
+
+    if (!rawPrompt) {
+        showToast("Please detail a garment description first.");
+        return;
+    }
+
+    const loader = document.getElementById('ai-loader');
+    const renderImg = document.getElementById('ai-render-img');
+    const overlay = document.getElementById('ai-img-overlay');
+    const actionBtn = document.getElementById('ai-generate-btn');
+
+    // Enter UI loading phase
+    loader.classList.remove('hidden');
+    actionBtn.disabled = true;
+    actionBtn.innerHTML = `<span class="flex items-center gap-2"><div class="w-4 h-4 border-2 border-brand-white border-t-transparent rounded-full animate-spin"></div> Weaving Design...</span>`;
+
+    // Augment user prompt with precise Red/White high fashion lighting attributes
+    const luxuryPrompt = `A premium high-fashion model shot or garment lookbook portrait showing: ${rawPrompt}. Highly polished studio context. The aesthetic is strictly structured around Crimson Red and Pristine Alabaster White. Soft luxury shadows, velvet or silk texture focus, clean white minimalistic backdrop. Direct catalog lighting, masterpiece quality, 8k resolution fashion presentation.`;
+
+    try {
+        const parsedImgBase64 = await callGeminiImage(luxuryPrompt);
+        
+        renderImg.src = parsedImgBase64;
+        renderImg.classList.remove('opacity-60');
+        renderImg.classList.add('opacity-100');
+
+        overlay.innerHTML = `
+            <span class="text-[10px] uppercase tracking-[0.15em] font-semibold text-brand-red bg-brand-white/95 backdrop-blur-sm px-4 py-2 border border-brand-red/10 rounded-sm max-w-xs truncate">
+                ${rawPrompt}
+            </span>
+        `;
+        showToast("Custom design generated successfully!");
+    } catch (err) {
+        showToast("Atelier generator is occupied. Please retry.");
+        console.error(err);
+    } finally {
+        loader.classList.add('hidden');
+        actionBtn.disabled = false;
+        actionBtn.innerHTML = `<i data-lucide="paintbrush" class="w-4 h-4"></i> Render Custom Blueprint`;
+        lucide.createIcons();
+    }
+}
+
+
+function toggleAIStylistDrawer() {
+    const drawer = document.getElementById('ai-stylist-drawer');
+    drawer.classList.toggle('opacity-0');
+    drawer.classList.toggle('pointer-events-none');
+    drawer.firstElementChild.classList.toggle('translate-x-full');
+}
+
+function handleAIStylistKeypress(event) {
+    if (event.key === 'Enter') {
+        sendAIStylistMessage();
+    }
+}
+
+function fillAndSendQuery(text) {
+    document.getElementById('ai-chat-input').value = text;
+    sendAIStylistMessage();
+}
+
+async function sendAIStylistMessage() {
+    const inputField = document.getElementById('ai-chat-input');
+    const userQuery = inputField.value.trim();
+
+    if (!userQuery) return;
+
+    // Clean user typing input slot
+    inputField.value = "";
+
+    const messagesBox = document.getElementById('ai-chat-messages');
+
+    // Append user dialogue box visually
+    const userMessageBubble = document.createElement('div');
+    userMessageBubble.className = "flex items-start gap-3 max-w-[85%] ml-auto flex-row-reverse";
+    userMessageBubble.innerHTML = `
+        <div class="w-6 h-6 bg-brand-charcoal text-brand-white text-[9px] font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-1">ME</div>
+        <div class="bg-brand-red text-brand-white p-3 rounded-sm text-xs leading-relaxed shadow-sm uppercase tracking-wider">
+            ${userQuery}
+        </div>
+    `;
+    messagesBox.appendChild(userMessageBubble);
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+
+    // Display high fashion thinking loader element
+    const thinkingBubble = document.createElement('div');
+    thinkingBubble.id = "ai-thinking-indicator";
+    thinkingBubble.className = "flex items-start gap-3 max-w-[85%]";
+    thinkingBubble.innerHTML = `
+        <div class="w-6 h-6 bg-brand-red text-brand-white text-[9px] font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-1">AI</div>
+        <div class="bg-brand-white p-3 rounded-sm border border-brand-red/10 text-xs shadow-sm flex items-center gap-2 py-4">
+            <div class="typing-dots flex gap-1">
+                <span></span><span></span><span></span>
+            </div>
+            <span class="text-[8px] uppercase tracking-widest font-semibold text-brand-red animate-pulse">Drafting look...</span>
+        </div>
+    `;
+    messagesBox.appendChild(thinkingBubble);
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+
+    // Define persona constraints for the high fashion Italian styling concierge
+    const stylistPersonaDoc = `You are "Atelier Concierge", an elite virtual fashion stylist based in Milan for the premium label FASHION IN. 
+Your aesthetic guidelines are absolutely strict: Crimson/scarlet red, alabaster/ivory white, and occasional sharp midnight black accents.
+Do not provide standard generic text helper dialog; speak with ultimate knowledge, pride, and authority like a premium designer or magazine editor. 
+Keep replies concise, tight, and dense (around 2 short paragraphs max). Point out our specific item catalogue matches (e.g., Crimson Evening Gowns, White Wool Blazers, Asymmetric White Trench, Cherry Boots, Satin Silk Hair Wraps).
+Use minimal and direct Markdown to format suggestions beautifully (bold items, short bullets). Use occasional high-fashion Italian words ("Bella", "Atelier", "Prego", "Sartorial", "Silhouettes"). Do not write more than 130 words.`;
+
+    try {
+        const rawStylistResponse = await callGeminiText(userQuery, stylistPersonaDoc);
+        
+        // Retract thinking loading bubble
+        const liveIndicator = document.getElementById('ai-thinking-indicator');
+        if (liveIndicator) messagesBox.removeChild(liveIndicator);
+
+        // Sanitize response markdown anchors to inline tags
+        let parsedText = rawStylistResponse
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n\n/g, '</p><p class="mt-2">')
+            .replace(/\n- (.*?)\n/g, '<li class="ml-4 list-disc">$1</li>')
+            .replace(/\n- (.*?)$/g, '<li class="ml-4 list-disc">$1</li>');
+
+        // Append stylized response dialogue bubble
+        const assistantBubble = document.createElement('div');
+        assistantBubble.className = "flex items-start gap-3 max-w-[85%]";
+        assistantBubble.innerHTML = `
+            <div class="w-6 h-6 bg-brand-red text-brand-white text-[9px] font-bold rounded-full flex items-center justify-center flex-shrink-0 mt-1">AI</div>
+            <div class="bg-brand-white p-3 rounded-sm border border-brand-red/10 text-xs text-brand-charcoal leading-relaxed shadow-sm chat-md">
+                <p>${parsedText}</p>
+            </div>
+        `;
+        messagesBox.appendChild(assistantBubble);
+        messagesBox.scrollTop = messagesBox.scrollHeight;
+    } catch (err) {
+        const liveIndicator = document.getElementById('ai-thinking-indicator');
+        if (liveIndicator) messagesBox.removeChild(liveIndicator);
+
+        showToast("Atelier Stylist is temporarily offline.");
+        console.error(err);
+    }
+}
+
+</script>
+</body>
+</html>
